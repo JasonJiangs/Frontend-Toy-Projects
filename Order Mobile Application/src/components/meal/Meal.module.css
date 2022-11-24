@@ -1,0 +1,9 @@
+.Meals{
+    /* scroll bar */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    
+    background-color: rgb(231, 200, 124);
+    overflow: auto;
+}

@@ -6,7 +6,7 @@ import Meal from "./components/meal/Meal";
 
 function App() {
   return (
-    <div style={{width:'700rem', height:200, backgroundColor:'#bfa'}}>
+    <div style={{width:'100%', height:200, backgroundColor:''}}>
       <Meal/>
     </div>
   );

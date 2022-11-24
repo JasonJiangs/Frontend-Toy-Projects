@@ -1,3 +1,46 @@
-.meal{
-    border-bottom: 1px #282c34 solid ;
+.Meal{
+    display: flex;
+    /* up down center */
+    align-items: center;  
+    padding: 1%;
+    border-bottom: #c29729 solid ;
+}
+
+.ImgBox{
+    width: 40%;
+}
+
+img{
+    width:100%;
+}
+
+.Title{
+    font-weight: normal;
+    font-size: 18px;    
+    margin-left: 2px;
+    margin-top: -5%;
+}
+
+.Desc{
+    color: #645d61;
+    margin-left: 2px;
+    margin-top: -5%;
+}
+
+.PriceWrapper{
+    /* margin-top: 5%; */
+    margin-left: 4px;
+    /* margin-top: -5%; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.Price{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.Price::before{
+    content: '$';
+    font-size: 16px;
 }
