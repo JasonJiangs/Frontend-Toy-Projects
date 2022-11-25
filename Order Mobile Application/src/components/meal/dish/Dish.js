@@ -1,18 +1,19 @@
 import React from 'react';
 import classes from "./dish.module.css"
+import Counter from '../../UI/Counter';
 
-export const Dish = () => {
+export const Dish = (prop) => {
     return (
         <div className={classes.Meal}>
             <div className={classes.ImgBox}>
-                <img src="/img/img.png" alt='Burger Image'/>
+                <img src={prop.meal.img} alt='Burger Image'/>
             </div>
             <div>
-                <h3 className={classes.Title}>Big Mac</h3>
-                <p className={classes.Desc}>Quarter Pounder with cheese. </p>
+                <h3 className={classes.Title}>{prop.meal.title}</h3>
+                <p className={classes.Desc}>{prop.meal.desc}</p>
                 <div className={classes.PriceWrapper}>
-                    <span className={classes.Price}>12</span>
-                    <div>Quantity</div>
+                    <span className={classes.Price}>{prop.meal.price}</span>
+                    <Counter amount={1}/>
                 </div>
             </div>
         </div>
