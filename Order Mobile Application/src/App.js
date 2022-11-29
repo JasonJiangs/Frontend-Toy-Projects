@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import Meal from "./components/meal/Meal";
-import {useRef, useState} from "react";
-
+import {useDebugValue, useState} from "react";
 
 function App() {
     const initialData = [
@@ -39,6 +37,26 @@ function App() {
         }
     ]
     const [mealData, setMealsData] = useState(initialData)
+
+    // store cart data
+    const [cartData, setCartData] = useState({
+        items:[],
+        totalAmount: 0,
+        totalPrice: 0
+    });
+
+    const addMealHandler = (product) => {
+        const tempCart = {...cartData};
+
+        if (tempCart.items.indexOf(product) === -1) { // -1: not find the target product
+            tempCart.items.push(product);
+            product.amount = 1;
+        } else {
+            product.amount += 1;
+        }
+        tempCart.totalAmount += 1;
+        tempCart.totalPrice += product.price;
+    }
 
     return (
         <div style={{width:'100%', height:200, backgroundColor:''}}>
