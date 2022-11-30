@@ -13,7 +13,10 @@ export const Dish = (prop) => {
                 <p className={classes.Desc}>{prop.meal.desc}</p>
                 <div className={classes.PriceWrapper}>
                     <span className={classes.Price}>{prop.meal.price}</span>
-                    <Counter amount={1}/>
+                    <Counter
+                        onAdd={prop.onAdd}
+                        meal={prop.meal}
+                    />
                 </div>
             </div>
         </div>

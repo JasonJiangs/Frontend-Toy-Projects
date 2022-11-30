@@ -4,19 +4,26 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faMinus} from "@fortawesome/free-solid-svg-icons";
 
 export default function Counter(props) {
+
+    const addButtonHandler = () => {
+        props.onAdd(props.meal)
+    }
+
   return (
     <div className={classes.Counter}>
         {
-            (props.amount && props.amount !== 0) ?  (
+            (props.meal.amount && props.meal.amount !== 0) ?  (
             <>
                 <button className={classes.Sub}>
                     <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>
                 </button>
-                <span className={classes.Count}>{props.amount}</span>
+                <span className={classes.Count}>{props.meal.amount}</span>
             </>
                 ) : null
         }
-        <button className={classes.Add}>
+        <button
+            onClick={addButtonHandler}
+            className={classes.Add}>
             <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
         </button>
     </div>

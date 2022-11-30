@@ -45,6 +45,23 @@ function App() {
         totalPrice: 0
     });
 
+    const subMealHandler = (product) => {
+        // copy cart
+        const tempCart = {...cartData};
+
+        product.amount -= 1;
+
+        if (product.amount === 0) {
+            // remove cart if the amount is already 0
+            tempCart.items.splice(tempCart.items.indexOf(product), 1)
+        }
+
+        tempCart.totalAmount -= 1;
+        tempCart.totalPrice -= product.price;
+
+        setCartData(tempCart)
+    }
+
     const addMealHandler = (product) => {
         const tempCart = {...cartData};
 
@@ -56,11 +73,16 @@ function App() {
         }
         tempCart.totalAmount += 1;
         tempCart.totalPrice += product.price;
+
+        setCartData(tempCart)
     }
 
     return (
         <div style={{width:'100%', height:200, backgroundColor:''}}>
-            <Meal mealsData={mealData}/>
+            <Meal
+                mealsData={mealData}
+                onAdd={addMealHandler}
+            />
         </div>
     );
 }
