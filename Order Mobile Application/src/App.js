@@ -1,6 +1,7 @@
 import './App.css';
 import Meal from "./components/meal/Meal";
 import {useDebugValue, useState} from "react";
+import CartContext from "./store/cart-context";
 
 function App() {
     const initialData = [
@@ -45,7 +46,7 @@ function App() {
         totalPrice: 0
     });
 
-    const subMealHandler = (product) => {
+    const removeItem = (product) => {
         // copy cart
         const tempCart = {...cartData};
 
@@ -62,7 +63,7 @@ function App() {
         setCartData(tempCart)
     }
 
-    const addMealHandler = (product) => {
+    const addItem = (product) => {
         const tempCart = {...cartData};
 
         if (tempCart.items.indexOf(product) === -1) { // -1: not find the target product
@@ -78,12 +79,15 @@ function App() {
     }
 
     return (
-        <div style={{width:'100%', height:200, backgroundColor:''}}>
-            <Meal
-                mealsData={mealData}
-                onAdd={addMealHandler}
-            />
-        </div>
+        // Context
+            <div style={{width:'100%', height:200, backgroundColor:''}}>
+
+                <CartContext.Provider value={{...cartData, addItem, removeItem}}>
+                <Meal
+                    mealsData={mealData}
+                />
+                </CartContext.Provider>
+            </div>
     );
 }
 

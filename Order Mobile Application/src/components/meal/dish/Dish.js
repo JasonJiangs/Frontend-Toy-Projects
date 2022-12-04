@@ -14,7 +14,6 @@ export const Dish = (prop) => {
                 <div className={classes.PriceWrapper}>
                     <span className={classes.Price}>{prop.meal.price}</span>
                     <Counter
-                        onAdd={prop.onAdd}
                         meal={prop.meal}
                     />
                 </div>
