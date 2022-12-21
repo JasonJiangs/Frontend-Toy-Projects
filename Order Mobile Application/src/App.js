@@ -1,7 +1,9 @@
 import './App.css';
 import Meal from "./components/meal/Meal";
-import {useDebugValue, useState} from "react";
+import {useState} from "react";
 import CartContext from "./store/cart-context";
+import MealFilter from "./components/MealFilter/MealFilter";
+import Cart from "./components/Cart/Cart";
 
 function App() {
     const initialData = [
@@ -39,21 +41,27 @@ function App() {
     ]
     const [mealData, setMealsData] = useState(initialData)
 
-    // store cart data
+    // store Cart data
     const [cartData, setCartData] = useState({
-        items:[],
+        items: [],
         totalAmount: 0,
         totalPrice: 0
     });
 
+    // create function for filtering meals
+    const filterHandler = (keyword) => {
+        const newMealsData = initialData.filter(item => item.title.indexOf(keyword) !== -1)
+        setMealsData(newMealsData);
+    }
+
     const removeItem = (product) => {
-        // copy cart
+        // copy Cart
         const tempCart = {...cartData};
 
         product.amount -= 1;
 
         if (product.amount === 0) {
-            // remove cart if the amount is already 0
+            // remove Cart if the amount is already 0
             tempCart.items.splice(tempCart.items.indexOf(product), 1)
         }
 
@@ -80,14 +88,13 @@ function App() {
 
     return (
         // Context
-            <div style={{width:'100%', height:200, backgroundColor:''}}>
-
-                <CartContext.Provider value={{...cartData, addItem, removeItem}}>
-                <Meal
-                    mealsData={mealData}
-                />
-                </CartContext.Provider>
+        <CartContext.Provider value={{...cartData, addItem, removeItem}}>
+            <div>
+                <MealFilter onFilter={filterHandler}/>
+                <Meal mealsData={mealData}/>
+                <Cart/>
             </div>
+        </CartContext.Provider>
     );
 }
 
