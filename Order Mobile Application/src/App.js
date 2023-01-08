@@ -11,31 +11,31 @@ function App() {
             id: '1',
             title: 'Big Mac',
             desc: '800-900 Cal.',
-            price: 11.09,
+            price: 11,
             img: '/imgs/burger.png'
         }, {
             id: '2',
             title: 'McNuggets',
             desc: '1660 Cal. 40x',
-            price: 12.09,
+            price: 12,
             img: '"/imgs/mcnuggets.png"'
         }, {
             id: '3',
             title: 'Chocolate Shake',
             desc: '650 Cal.',
-            price: 5.09,
+            price: 5,
             img: '/imgs/chocolateShake.png'
         }, {
             id: '4',
             title: 'Cookie',
             desc: '140-170 Cal. 1x',
-            price: 1.59,
+            price: 2,
             img: '/imgs/cookie.png'
         }, {
             id: '5',
             title: 'Apple Pie',
             desc: '510 Cal.',
-            price: 2.99,
+            price: 3,
             img: '/imgs/applePie.png'
         }
     ]
